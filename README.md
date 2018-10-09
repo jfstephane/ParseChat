@@ -1,15 +1,15 @@
-# Lab 4 - *Name of App Here*
+# Lab 4 - *ParseChat*
 
-**Name of your app** is a Chat app using an [open source Parse](http://parseplatform.org/) backend.
+**ParseChat** is a Chat app using an [open source Parse](http://parseplatform.org/) backend.
 
-Time spent: **X** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
 The following **required** user stories are complete:
 
-- [ ] User can sign up and sign in to the login screen (+1pt)
-- [ ] User sees alerts for login exceptions, i.e. "account already exists", "wrong credentials", etc. (+1pt)
+- [X] User can sign up and sign in to the login screen (+1pt)
+- [X] User sees alerts for login exceptions, i.e. "account already exists", "wrong credentials", etc. (+1pt)
 - [ ] User can compose and send chat messages (+2pt)
 - [ ] User can view a list of chat messages in chronological order (+2pt)
 - [ ] Automatically Adjust Cell Size to Fit Text (+1pt)
@@ -47,7 +47,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2018] [Jules Frantz Stephane Loubeau]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
