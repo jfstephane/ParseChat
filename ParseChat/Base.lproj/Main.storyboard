@@ -82,26 +82,44 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="67" id="Sle-Bq-EuW" customClass="ChatCell" customModule="ParseChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="86" id="Sle-Bq-EuW" customClass="ChatCell" customModule="ParseChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sle-Bq-EuW" id="RNM-89-UgQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaF-KG-kQK">
-                                                    <rect key="frame" x="322" y="11" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaF-KG-kQK">
+                                                    <rect key="frame" x="322" y="13" width="30" height="30"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoy-3S-2Wt">
-                                                    <rect key="frame" x="15" y="11" width="337" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoy-3S-2Wt">
+                                                    <rect key="frame" x="8" y="51" width="359" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEQ-6i-ad1">
+                                                    <rect key="frame" x="8" y="8" width="359" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="eoy-3S-2Wt" secondAttribute="bottom" constant="8" id="0O4-Zo-PBZ"/>
+                                                <constraint firstItem="eoy-3S-2Wt" firstAttribute="top" secondItem="KEQ-6i-ad1" secondAttribute="bottom" constant="5" id="CrT-Jm-kyN"/>
+                                                <constraint firstItem="KEQ-6i-ad1" firstAttribute="top" secondItem="RNM-89-UgQ" secondAttribute="top" constant="8" id="I2L-qn-HJp"/>
+                                                <constraint firstItem="KEQ-6i-ad1" firstAttribute="leading" secondItem="RNM-89-UgQ" secondAttribute="leading" constant="8" id="NwH-uX-Tdg"/>
+                                                <constraint firstItem="eoy-3S-2Wt" firstAttribute="leading" secondItem="RNM-89-UgQ" secondAttribute="leading" constant="8" id="ecC-bC-Ojo"/>
+                                                <constraint firstAttribute="trailing" secondItem="KEQ-6i-ad1" secondAttribute="trailing" constant="8" id="rKE-Ro-kwI"/>
+                                                <constraint firstItem="eoy-3S-2Wt" firstAttribute="top" secondItem="HaF-KG-kQK" secondAttribute="bottom" constant="8" id="wQG-1E-17c"/>
+                                                <constraint firstAttribute="trailing" secondItem="eoy-3S-2Wt" secondAttribute="trailing" constant="8" id="zLM-Di-PNv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageLabel" destination="eoy-3S-2Wt" id="JEg-ZX-Aus"/>
+                                            <outlet property="userLabel" destination="KEQ-6i-ad1" id="bwk-Xj-URr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -113,9 +131,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ApV-hp-3O2">
-                                <rect key="frame" x="300" y="617" width="46" height="30"/>
+                                <rect key="frame" x="305" y="617" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="sendMessage:" destination="Q6Z-Yj-XKz" eventType="touchUpInside" id="gsI-pn-F8d"/>
                                 </connections>
