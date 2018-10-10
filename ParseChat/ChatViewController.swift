@@ -14,6 +14,7 @@ import Parse
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         var messages = [PFObject]()
+    var refreshControl: UIRefreshControl!
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -28,6 +29,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ChatViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
         
     
         // Do any additional setup after loading the view.
@@ -97,6 +103,27 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func logouButton(_ sender: Any) {
+        
+        PFUser.logOutInBackground(block: { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                let user = PFUser.current() ?? nil
+                print("Successful logout")
+                print(user as Any)
+                
+            }
+            self.performSegue(withIdentifier: "logoutSegue", sender: nil)
+            
+            
+        })
+        
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return messages.count;
         
@@ -118,7 +145,40 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl)
+    {
+        loadMessage()
+    }
+    
+    func loadMessage(){
+        // construct query
+        let query = PFQuery(className: "Message")
+        query.addDescendingOrder("createdAt")
+        query.includeKey("user")
+        // query.limit = 20
+        
+        // fetch data asynchronously
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let posts = posts {
+                // do something with the array of object returned by the call
+                for message in posts{
+                    if (message["text"] != nil)
+                    {
+                        print(message["text"]!)
+                    }else{
+                        print("no text")
+                    }
+                }
+                self.messages = posts
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+        
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

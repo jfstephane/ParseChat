@@ -142,10 +142,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JSz-5l-bQP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YcL-9X-OGb"/>
+                    <navigationItem key="navigationItem" id="YcL-9X-OGb">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="zQO-uH-RE1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vRR-8b-g4W">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                            </button>
+                            <connections>
+                                <action selector="logouButton:" destination="Q6Z-Yj-XKz" id="flf-HA-3ve"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="messageField" destination="NWw-9x-xKU" id="P4m-SB-hgQ"/>
                         <outlet property="tableView" destination="BwJ-5r-MUl" id="Hgj-5e-4qd"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="jiY-Cn-YwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzn-J4-NcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
