@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EmM-O1-RRt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -59,6 +59,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="IZ7-K2-skk"/>
                     <connections>
                         <outlet property="psswordLabel" destination="OB3-3R-yBb" id="myJ-Eh-5RF"/>
                         <outlet property="usernameLabel" destination="ti5-hn-MoC" id="qhx-C1-BkL"/>
@@ -67,12 +68,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36" y="135"/>
+            <point key="canvasLocation" x="903.20000000000005" y="134.48275862068968"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="gsU-j6-Ol4">
             <objects>
-                <viewController id="Q6Z-Yj-XKz" customClass="ChatViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chatviewcontroller" id="Q6Z-Yj-XKz" customClass="ChatViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xR7-qC-y3O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,26 +144,28 @@
                         <viewLayoutGuide key="safeArea" id="JSz-5l-bQP"/>
                     </view>
                     <navigationItem key="navigationItem" id="YcL-9X-OGb">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="zQO-uH-RE1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vRR-8b-g4W">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="b2c-0K-fLd">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gM6-0G-lc5">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="LogoutSegue" id="440-Fg-Pl5"/>
+                                </connections>
                             </button>
                             <connections>
-                                <action selector="logouButton:" destination="Q6Z-Yj-XKz" id="flf-HA-3ve"/>
+                                <action selector="logoutUser:" destination="Q6Z-Yj-XKz" id="L4i-Vq-1uL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="messageField" destination="NWw-9x-xKU" id="P4m-SB-hgQ"/>
                         <outlet property="tableView" destination="BwJ-5r-MUl" id="Hgj-5e-4qd"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="jiY-Cn-YwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzn-J4-NcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2597.5999999999999" y="122.78860569715144"/>
+            <point key="canvasLocation" x="3536.8000000000002" y="122.78860569715144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aQm-mH-Sik">
@@ -180,7 +183,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rwW-6p-5By" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658.4000000000001" y="122.78860569715144"/>
+            <point key="canvasLocation" x="2597.5999999999999" y="122.78860569715144"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gpQ-c7-DdZ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xE3-MK-8IB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EmM-O1-RRt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="blB-EH-PW8">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fyJ-nx-kKk"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-36" y="134.48275862068968"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="440-Fg-Pl5"/>
+    </inferredMetricsTieBreakers>
 </document>

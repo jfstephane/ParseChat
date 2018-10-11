@@ -20,6 +20,24 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageField: UITextField!
     
+
+    @IBAction func logoutUser(_ sender: Any) {
+        
+        PFUser.logOutInBackground(block: { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                let user = PFUser.current() ?? nil
+                print("Successful logout")
+                print(user as Any)
+                
+            }
+            self.performSegue(withIdentifier: "logoutSegue", sender: nil)
+            
+            
+        })
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +60,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.reloadData()
         
         Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
-
-        
+        if let currentUser = PFUser.current() {
+            //labelWelcome.text = "Welcome back \(currentUser.username!) 😀"
+        }else {
+            let user = PFUser()
+            //labelWelcome.text = "Welcome \(user)"
+        }
         
     }
+    
+    
+    
 
     @IBAction func sendMessage(_ sender: Any) {
         
@@ -102,25 +127,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    @IBAction func logouButton(_ sender: Any) {
-        
-        PFUser.logOutInBackground(block: { (error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                let user = PFUser.current() ?? nil
-                print("Successful logout")
-                print(user as Any)
-                
-            }
-            self.performSegue(withIdentifier: "logoutSegue", sender: nil)
-            
-            
-        })
-        
-    }
+
     
     
     
@@ -155,7 +162,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let query = PFQuery(className: "Message")
         query.addDescendingOrder("createdAt")
         query.includeKey("user")
-        // query.limit = 20
         
         // fetch data asynchronously
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
